@@ -49,8 +49,18 @@ def zero_one():
     os.listdir()
 
 
-# In[ ]:
+def remove_files_regex(regex):
+    
+	""" remove files that match a regex pattern"""
+	
+	for file in os.listdir():
+    if regex.match(file):
+        try:
+            os.remove(file)
+        except:
+            print(f'{file}: file not exists')
 
+	
 
 
 
