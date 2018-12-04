@@ -19,16 +19,7 @@ def remove_extension(ext = '\.txt$'):
     
     file_list = os.listdir()
     file_list_new = [ext.sub('', file) for file in file_list]
-    file_list_splitted = []
-    for file in file_list:
-        file_list_splitted.append(file.split('.'))    # split the file name.
-    
-    for i, s in enumerate(file_list_splitted):
-        if s[-1] == ext:
-            s.pop()
-        file_list_splitted[i] = '.'.join(s)           # remove the extension and join the file name back
-    
-    zipped = zip(file_list, file_list_splitted)
+    zipped = zip(file_list, file_list_new)
     
     for o, n in zipped:
         os.rename(o, n)
