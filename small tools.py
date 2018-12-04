@@ -13,7 +13,8 @@ import re
 def remove_extension(ext = '\.txt$'):
 
     """ this script will remove the specific extension of all the files in the current folder
-    and list the content of the folder if success"""
+    and list the content of the folder if success, this is a nice and short one, the old one
+    under this is still working"""
     
     regex = re.compile(ext)
     
@@ -28,6 +29,27 @@ def remove_extension(ext = '\.txt$'):
             print(f'{o}: access denied')
     
     os.listdir()
+
+def remove_extension_old(ext = 'txt'):
+
+    """ this script will remove the specific extension of all the files in the current folder
+    and list the content of the folder if success"""
+    
+    file_list = os.listdir()
+    
+    file_list_splitted = []
+    for file in file_list:
+        file_list_splitted.append(file.split('.'))    # split the file name.
+    
+    for i, s in enumerate(file_list_splitted):
+        if s[-1] == ext:
+            s.pop()
+        file_list_splitted[i] = '.'.join(s)           # remove the extension and join the file name back
+    
+    zipped = zip(file_list, file_list_splitted)
+    
+    for o, n in zipped:
+        os.rename(o, n)
 
 
 # In[41]:
