@@ -28,7 +28,7 @@ def remove_extension(ext = '\.txt$'):
         except:
             print(f'{o}: access denied')
     
-    os.listdir()
+    print(os.listdir())
 
 def remove_extension_old(ext = 'txt'):
 
