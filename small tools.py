@@ -15,14 +15,17 @@ def remove_extension(ext = '\.txt$'):
     """ this script will remove the specific extension of all the files in the current folder
     and list the content of the folder if success"""
     
-    regex = ext
+    regex = re.compile(ext)
     
     file_list = os.listdir()
-    file_list_new = [ext.sub('', file) for file in file_list]
+    file_list_new = [regex.sub('', file) for file in file_list]
     zipped = zip(file_list, file_list_new)
     
     for o, n in zipped:
-        os.rename(o, n)
+        try:
+            os.rename(o, n)
+        except:
+            print(f'{o}: access denied')
     
     os.listdir()
 
